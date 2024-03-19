@@ -8,8 +8,9 @@ def to_jpg(root_folder, output_folder):
         for file in files:
             file_path = os.path.join(root, file)
             print(file_path)
+            # file_path = file_path.lower()
             # Check if the file is an image
-            if file_path.endswith(('.jpg', '.jpeg', '.png', '.bmp', '.webp')):
+            if file_path.endswith(('.jpg', '.jpeg', '.png', '.bmp', '.webp', '.PNG')):
                 print(file_path)
                 try:
                     # Determine the relative path for the output folder
@@ -31,8 +32,7 @@ def to_jpg(root_folder, output_folder):
 
 
 if __name__ == "__main__":
-    root_folder = "new_birds"  # Specify the root folder containing images
-    output_folder = "new_birds1"  # Specify the output folder for converted images
+    root_folder = "BIRDS"  # Specify the root folder containing images
+    output_folder = "BIRDS1"  # Specify the output folder for converted images
 
     to_jpg(root_folder, output_folder)
-

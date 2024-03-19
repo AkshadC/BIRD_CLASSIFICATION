@@ -16,7 +16,7 @@ def crop_and_save_image(image_path, bounding_box, save_path):
 
 
 # Path to the birds folder
-birds_folder = "BIRDS1"
+birds_folder = "BIRDS"
 errors = []
 # Loop through each bird species folder
 for bird_species in os.listdir(birds_folder):
