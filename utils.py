@@ -3,7 +3,7 @@ import itertools
 import os
 import random
 import zipfile
-
+import pandas as pd
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 import numpy as np
@@ -294,3 +294,21 @@ def load_prep_image(image_name_path, img_size=None):
 
     return img
 
+
+def add_top_three_row_values(dataframe: pd.DataFrame, y_labels: list):
+    """
+
+    :param dataframe: The dataframe of predicition probabilities
+    :param y_labels: The true labels of the dataset
+    :return: Returns a dataframe of two columns, one with a list of top 3 predictions and other with the true label
+    """
+    top_3_preds = pd.DataFrame()
+    top3_lists = []
+    for index, row in dataframe.iterrows():
+        row_values = row.values
+        top_indices = np.argsort(row_values)[-3:][::-1]
+        top_columns = dataframe.columns[top_indices]
+        top3_lists.append(top_columns.tolist())
+    top_3_preds['top 3 cols'] = top3_lists
+    top_3_preds['True Label'] = y_labels
+    return top_3_preds
